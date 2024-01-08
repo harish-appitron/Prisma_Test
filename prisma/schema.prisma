@@ -11,12 +11,30 @@ datasource db {
 }
 
 
-
-
 model user1 {
   id      Int      @id @default(autoincrement())
   email   String   @unique
-  name    String?
+  name    String? 
   password String
+  comment comment[]
   created_at  DateTime @default(now())
+}
+
+model post {
+  id   Int  @id @default(autoincrement())
+  user_id  Int?
+  title String?
+  description String?
+  created_at DateTime @default(now())
+}
+
+
+
+model comment {
+  id String @id @default(uuid())
+  post_id Int
+  user user1 @relation(fields: [user_id], references: [id], onDelete : Cascade)
+  user_id  Int
+  comment String
+  created_at DateTime @default(now())
 }

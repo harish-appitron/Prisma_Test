@@ -24,12 +24,8 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
-const test = __importStar(require("../controller/Test"));
-const user = (0, express_1.Router)();
-user.post("/Signup", test.createUser);
-user.patch("/updated", test.UpdateUser);
-user.get("/Get", test.GetUser);
-user.delete("/delete", test.deleteUser);
-user.get("/GetAllUser", test.allUser);
-exports.default = user;
-//# sourceMappingURL=test.js.map
+const Post = __importStar(require("../controller/Post"));
+const post1 = (0, express_1.Router)();
+post1.post("/insert", Post.createPost);
+exports.default = post1;
+//# sourceMappingURL=postroute.js.map
